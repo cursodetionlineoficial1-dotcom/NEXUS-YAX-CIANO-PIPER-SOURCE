@@ -15,3 +15,14 @@ O motor Piper 1.8.0 e sua fonte nativa, o eSpeak NG usado por ele, scripts e ins
 Os arquivos correspondentes devem ser acessíveis gratuitamente e por meio do mesmo canal de distribuição do executável, conforme a GNU GPL v3, seção 6(d).
 
 **Importante:** não publicar dados sensíveis, segredo de API, serial privado nem o projeto comercial completo da NEXUS STORE. Publicar apenas o que for permitido e necessário para cumprir a licença.
+
+## Pacote GPL único preparado para Release
+
+O arquivo foi montado e verificado, mas **ainda não está anexado a uma release pública**:
+
+- Arquivo: `NEXUS_YAX_CIANO_PIPER_CADU_GPL_SOURCE_v1.zip`
+- Tamanho: **74.291.857 bytes**
+- SHA-256: `f0ce8ef0bb1e4c9d5ff028f4de39c8e0d36913c723490dbca7200b29a24d49e9`
+- Conteúdo: 64 arquivos selecionados, incluindo os cinco módulos próprios sob GPL-3.0-or-later, fontes Piper/eSpeak, receitas de compilação e licenças.
+
+**Ação de publicação:** anexar o arquivo ZIP à seção [Releases](https://github.com/cursodetionlineoficial1-dotcom/NEXUS-YAX-CIANO-PIPER-SOURCE/releases) deste repositório, publicar a release, conferir acesso sem login e atualizar este status. Não considerar a simples presença de um hash nesta página como disponibilização do código-fonte.
