@@ -19,6 +19,6 @@ Os componentes e suas licenças permanecem sob os respectivos titulares. A licen
 
 O pacote correspondente deve incluir o texto integral GPL, código-fonte Piper e eSpeak NG, ponte e scripts de compilação aplicáveis, avisos da wheel ONNX Runtime 1.32.0, licenças da NumPy 2.5.5/OpenBLAS, OpenSSL, Python, PyInstaller e `MODEL_CARD` da voz.
 
-**Situação:** o conjunto completo está em fase de transferência/revisão e ainda não consta integralmente neste repositório público.
+**Situação:** o [ZIP de fontes e avisos GPL](https://github.com/cursodetionlineoficial1-dotcom/NEXUS-YAX-CIANO-PIPER-SOURCE/releases/download/piper-cadu-source-v1.0/NEXUS_YAX_CIANO_PIPER_CADU_GPL_SOURCE_v1.zip) foi anexado à [release pública v1.0](https://github.com/cursodetionlineoficial1-dotcom/NEXUS-YAX-CIANO-PIPER-SOURCE/releases/tag/piper-cadu-source-v1.0), com hash confirmado. A publicação dos arquivos não equivale a homologação jurídica da suficiência do Código-Fonte Correspondente para todo o produto comercial.
 
 Fontes: [GPL](https://www.gnu.org/licenses/gpl-3.0.html), [PyInstaller](https://pyinstaller.org/en/stable/license.html), [Piper](https://github.com/OHF-Voice/piper1-gpl), [ONNX Runtime](https://pypi.org/project/onnxruntime/1.32.0/).
