@@ -1,28 +1,19 @@
 # Estado de disponibilização do código-fonte
 
+**Atualizado em 25/11/2026, após publicação e verificação da release no GitHub.**
+
 - **Repositório:** público.
-- **Licença do repositório:** GNU GPL v3.0.
-- **Opção GPL selecionada para os cinco módulos Python próprios da voz:** GPL-3.0-or-later.
-- **Cinco arquivos Python próprios da integração:** publicados na pasta [`src/`](src/) sob SPDX `GPL-3.0-or-later`.
-- **Fontes correspondentes completas do Piper e de terceiros:** ainda não anexadas.
-- **Download público gratuito e íntegro das fontes:** ainda pendente de teste.
-- **Status:** preparação pública iniciada; **não anunciar distribuição GPL como concluída**.
+- **Release:** [piper-cadu-source-v1.0](https://github.com/cursodetionlineoficial1-dotcom/NEXUS-YAX-CIANO-PIPER-SOURCE/releases/tag/piper-cadu-source-v1.0), publicada (não é rascunho).
+- **Pacote de fontes:** [NEXUS_YAX_CIANO_PIPER_CADU_GPL_SOURCE_v1.zip](https://github.com/cursodetionlineoficial1-dotcom/NEXUS-YAX-CIANO-PIPER-SOURCE/releases/download/piper-cadu-source-v1.0/NEXUS_YAX_CIANO_PIPER_CADU_GPL_SOURCE_v1.zip).
+- **Tamanho confirmado pela API do GitHub:** 74.291.857 bytes.
+- **SHA-256 informado pelo GitHub:** `f0ce8ef0bb1e4c9d5ff028f4de39c8e0d36913c723490dbca7200b29a24d49e9`.
+- **Conteúdo do arquivo original preparado:** 64 entradas de fontes upstream Piper/eSpeak, cinco módulos Python sob GPL-3.0-or-later, script de compilação e avisos de terceiros.
+- **Cinco módulos próprios da integração:** também disponíveis individualmente em [src/](src/).
+- **Acesso:** arquivo publicado em release de repositório público; download efetivo por cliente sem login ainda deve ser validado antes da venda.
+- **Conformidade jurídica e completude do Código-Fonte Correspondente:** não certificadas; a análise do alcance da GPL sobre o aplicativo C# permanece necessária.
 
-## O que será disponibilizado
+O pacote disponibiliza fontes e avisos sem custo adicional e independentemente do Asaas. O aplicativo C# do YAX não está incluído. Se a análise jurídica/tecnológica identificar fontes adicionais exigíveis, a distribuição comercial só deverá prosseguir após incluí-las e assegurar os direitos dos destinatários.
 
-O motor Piper 1.8.0 e sua fonte nativa, o eSpeak NG usado por ele, scripts e instruções de compilação, licenças e atribuições aplicáveis e documentos de procedência do modelo de voz. Os cinco arquivos Python próprios da integração já estão publicados.
+**Não confundir os arquivos automáticos “Source code (zip)” e “Source code (tar.gz)” do GitHub com o pacote GPL de 74 MB.** Eles contêm somente a árvore do repositório na tag e não substituem o ZIP explícito acima.
 
-Os arquivos correspondentes devem ser acessíveis gratuitamente e por meio do mesmo canal de distribuição do executável, conforme a GNU GPL v3, seção 6(d).
-
-**Importante:** não publicar dados sensíveis, segredo de API, serial privado nem o projeto comercial completo da NEXUS STORE. Publicar apenas o que for permitido e necessário para cumprir a licença.
-
-## Pacote GPL único preparado para Release
-
-O arquivo foi montado e verificado, mas **ainda não está anexado a uma release pública**:
-
-- Arquivo: `NEXUS_YAX_CIANO_PIPER_CADU_GPL_SOURCE_v1.zip`
-- Tamanho: **74.291.857 bytes**
-- SHA-256: `f0ce8ef0bb1e4c9d5ff028f4de39c8e0d36913c723490dbca7200b29a24d49e9`
-- Conteúdo: 64 arquivos selecionados, incluindo os cinco módulos próprios sob GPL-3.0-or-later, fontes Piper/eSpeak, receitas de compilação e licenças.
-
-**Ação de publicação:** anexar o arquivo ZIP à seção [Releases](https://github.com/cursodetionlineoficial1-dotcom/NEXUS-YAX-CIANO-PIPER-SOURCE/releases) deste repositório, publicar a release, conferir acesso sem login e atualizar este status. Não considerar a simples presença de um hash nesta página como disponibilização do código-fonte.
+Referência: [GPLv3 §6](https://www.gnu.org/licenses/gpl-3.0.html#section6).
