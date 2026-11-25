@@ -1,0 +1,33 @@
+name: 'Piper CADU | Preparar lançamento GPL em rascunho (sem publicar)'
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/prepare-gpl-draft-release.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  create-draft:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Criar apenas rascunho para tag já existente
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          tag='piper-cadu-source-v1.0'
+          if gh release view "$tag" --repo "$GH_REPO" >/dev/null 2>&1; then
+            echo "GPL_DRAFT_ALREADY_PRESENT: $tag"
+            exit 0
+          fi
+          gh release create "$tag" --repo "$GH_REPO" \
+            --verify-tag \
+            --draft \
+            --title "$tag" \
+            --notes "Fontes e licenças GPL do motor Piper CADU para YAX Ciano. RASCUNHO — anexe primeiro NEXUS_YAX_CIANO_PIPER_CADU_GPL_SOURCE_v1.zip (74.291.857 bytes, SHA-256 f0ce8ef0bb1e4c9d5ff028f4de39c8e0d36913c723490dbca7200b29a24d49e9), confira integridade e licenças antes de publicar. Não inclui nem altera o aplicativo comercial YAX."
+          echo "GPL_RELEASE_DRAFT_CREATED: $tag"
+          echo "GPL_RELEASE_NOT_PUBLISHED: ZIP ainda precisa ser anexado e verificado"
