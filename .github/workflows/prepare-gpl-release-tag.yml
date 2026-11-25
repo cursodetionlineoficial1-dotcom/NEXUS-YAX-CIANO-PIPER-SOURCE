@@ -1,0 +1,35 @@
+name: 'GPL Piper CADU | Criar etiqueta de release automaticamente'
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/prepare-gpl-release-tag.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  tag:
+    name: 'Criar piper-cadu-source-v1.0 se ainda nao existir'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+      - name: Criar tag leve sem publicar release ou arquivos
+        shell: bash
+        run: |
+          set -euo pipefail
+          TAG='piper-cadu-source-v1.0'
+          if git ls-remote --exit-code --tags origin "refs/tags/$TAG" >/dev/null 2>&1; then
+            echo "GPL_TAG_ALREADY_EXISTS: $TAG"
+            exit 0
+          fi
+          git -c user.name='github-actions[bot]' \
+              -c user.email='41898282+github-actions[bot]@users.noreply.github.com' \
+              tag "$TAG" "$GITHUB_SHA"
+          git push origin "refs/tags/$TAG"
+          echo "GPL_TAG_CREATED: $TAG"
+          echo "GPL_RELEASE_NOT_PUBLISHED: continue only after attaching validated source ZIP"
