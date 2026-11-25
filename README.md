@@ -2,7 +2,7 @@
 
 Repositório público dedicado aos componentes de **síntese de voz Piper CADU** utilizados no aplicativo Windows YAX Ciano.
 
-**Este repositório não contém o código-fonte integral do aplicativo comercial YAX**, o sistema de pagamentos ou o projeto privado da NEXUS STORE. O código-fonte do motor de voz e da integração será oferecido aqui em versão correspondente à distribuição.
+**Este repositório não contém o código-fonte integral do aplicativo comercial YAX**, o sistema de pagamentos ou o projeto privado da NEXUS STORE. O repositório disponibiliza as fontes da integração Python e um pacote de fontes, scripts e avisos de terceiros para a versão Piper CADU da RC5.
 
 ## Licenças
 
@@ -15,9 +15,12 @@ Repositório público dedicado aos componentes de **síntese de voz Piper CADU**
 
 ## Estado do código-fonte
 
-**Os cinco módulos Python GPL já estão publicados em [src/](src/).** O pacote completo do motor, das dependências e dos scripts de reconstrução ainda não foi anexado. Não interprete a existência desta página e da licença como cumprimento completo da obrigação de distribuição das fontes.
+**Publicado:** os cinco módulos Python sob GPL-3.0-or-later estão na pasta [src/](src/), e o arquivo ZIP com fontes upstream, scripts e avisos está na [release piper-cadu-source-v1.0](https://github.com/cursodetionlineoficial1-dotcom/NEXUS-YAX-CIANO-PIPER-SOURCE/releases/tag/piper-cadu-source-v1.0).
 
-Quando os arquivos estiverem disponíveis, o acesso ao código-fonte será gratuito, inclusive para quem não comprar o YAX. O instalador comercial será disponibilizado separadamente na NEXUS STORE; os direitos dos componentes GPL serão preservados.
+- [Baixar o ZIP GPL de fontes e avisos](https://github.com/cursodetionlineoficial1-dotcom/NEXUS-YAX-CIANO-PIPER-SOURCE/releases/download/piper-cadu-source-v1.0/NEXUS_YAX_CIANO_PIPER_CADU_GPL_SOURCE_v1.zip) — **74.291.857 bytes**.
+- SHA-256: `f0ce8ef0bb1e4c9d5ff028f4de39c8e0d36913c723490dbca7200b29a24d49e9`.
+
+O acesso ao pacote é público e não depende do pagamento ou do login na NEXUS STORE. A publicação não constitui, por si só, certificação jurídica de completude do Código-Fonte Correspondente da versão comercial. O instalador comercial é distribuído separadamente.
 
 A distinção entre o motor Piper, que é GPL, e o aplicativo C# deve ser avaliada segundo o modo como os processos se comunicam. Este repositório **não afirma** que todos os componentes de terceiros ou que o aplicativo inteiro tenham a mesma licença.
 
