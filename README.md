@@ -15,13 +15,13 @@ Repositório público dedicado aos componentes de **síntese de voz Piper CADU**
 
 ## Estado do código-fonte
 
-**O repositório foi criado; os arquivos completos do código-fonte correspondente ainda não foram anexados.** Não interprete a existência desta página e da licença como cumprimento completo da obrigação de distribuição das fontes.
+**Os cinco módulos Python GPL já estão publicados em [src/](src/).** O pacote completo do motor, das dependências e dos scripts de reconstrução ainda não foi anexado. Não interprete a existência desta página e da licença como cumprimento completo da obrigação de distribuição das fontes.
 
 Quando os arquivos estiverem disponíveis, o acesso ao código-fonte será gratuito, inclusive para quem não comprar o YAX. O instalador comercial será disponibilizado separadamente na NEXUS STORE; os direitos dos componentes GPL serão preservados.
 
 A distinção entre o motor Piper, que é GPL, e o aplicativo C# deve ser avaliada segundo o modo como os processos se comunicam. Este repositório **não afirma** que todos os componentes de terceiros ou que o aplicativo inteiro tenham a mesma licença.
 
-Para acompanhar a composição e integridade das fontes, consulte [estado da distribuição](SOURCE_STATUS.md).
+As fontes próprias publicadas incluem `voice_bridge.py`, `english_client.py`, `hybrid_audio.py`, `pronunciacao_estrangeiros.py` e `voice_english_worker.py`, todos com cabeçalho SPDX GPL-3.0-or-later. Para acompanhar a composição e integridade das fontes, consulte [estado da distribuição](SOURCE_STATUS.md).
 
 ## Referências oficiais
 
