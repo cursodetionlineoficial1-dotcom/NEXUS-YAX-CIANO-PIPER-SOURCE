@@ -1,0 +1,56 @@
+name: 'Piper CADU GPL | Atualizar notas do lançamento público'
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/update-piper-cadu-release-notes.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  update-release-notes:
+    name: 'Conferir asset e corrigir texto RASCUNHO da release publicada'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Verificar release pública e integridade declarada do asset
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          TAG='piper-cadu-source-v1.0'
+          FILE='NEXUS_YAX_CIANO_PIPER_CADU_GPL_SOURCE_v1.zip'
+          EXPECTED_SHA='sha256:f0ce8ef0bb1e4c9d5ff028f4de39c8e0d36913c723490dbca7200b29a24d49e9'
+          EXPECTED_BYTES='74291857'
+
+          release_json="$(gh api "repos/$GH_REPO/releases/tags/$TAG")"
+          echo "$release_json" | jq -e '.draft == false and .prerelease == false and .published_at != null' >/dev/null
+          asset_json="$(echo "$release_json" | jq -c --arg n "$FILE" '[.assets[] | select(.name == $n and .state == "uploaded")] | if length == 1 then .[0] else empty end')"
+          test -n "$asset_json"
+          echo "$asset_json" | jq -e --arg sha "$EXPECTED_SHA" --argjson bytes "$EXPECTED_BYTES" '.size == $bytes and .digest == $sha' >/dev/null
+          echo 'GPL_SOURCE_PUBLIC_RELEASE_ASSET_VERIFIED: exact size and official GitHub digest'
+
+          cat > "$RUNNER_TEMP/release-notes.txt" <<'EOF'
+          # Código-fonte GPL — Piper CADU · YAX Ciano
+
+          Disponibilização gratuita das fontes e avisos de licença do motor Piper CADU utilizado no YAX Ciano, incluindo código Piper 1.8.0, fontes nativas eSpeak NG, cinco módulos Python de integração licenciados `GPL-3.0-or-later`, scripts de compilação e avisos de terceiros.
+
+          **Arquivo de fontes:** `NEXUS_YAX_CIANO_PIPER_CADU_GPL_SOURCE_v1.zip`
+
+          **Tamanho:** 74.291.857 bytes (aproximadamente 70,85 MiB).
+
+          **SHA-256:** `f0ce8ef0bb1e4c9d5ff028f4de39c8e0d36913c723490dbca7200b29a24d49e9`
+
+          O ZIP acima é o pacote de fontes e licenças. Os arquivos automáticos "Source code (zip)" e "Source code (tar.gz)" contêm apenas a árvore Git e **não substituem esse ZIP**.
+
+          O acesso às fontes é gratuito e independente de compras ou pagamentos na NEXUS STORE. O pacote não inclui nem altera o aplicativo comercial C# YAX.
+
+          **Nota de conformidade:** esta publicação não constitui parecer jurídico sobre a separação YAX–Piper ou certificação de que todo o produto atende integralmente à GPL. Antes da distribuição comercial, revisar a completude do Código-Fonte Correspondente e os direitos aplicáveis.
+
+          Consulte também [SOURCE_STATUS.md](https://github.com/cursodetionlineoficial1-dotcom/NEXUS-YAX-CIANO-PIPER-SOURCE/blob/main/SOURCE_STATUS.md) e [THIRD_PARTY_NOTICES.md](https://github.com/cursodetionlineoficial1-dotcom/NEXUS-YAX-CIANO-PIPER-SOURCE/blob/main/THIRD_PARTY_NOTICES.md).
+          EOF
+          gh release edit "$TAG" --repo "$GH_REPO" --notes-file "$RUNNER_TEMP/release-notes.txt"
+          echo "GPL_SOURCE_PUBLIC_RELEASE_NOTES_UPDATED: $TAG"
+          echo "GPL_SOURCE_APP_UNCHANGED: No commercial app or Asaas modifications"
