@@ -1,0 +1,57 @@
+name: 'Piper CADU GPL | Verificar download publico gratuito e integridade'
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/verificar-download-publico-fonte-gpl.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  public-source:
+    name: 'Baixar ZIP SEM LOGIN, validar SHA-256 e componentes GPL'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Baixar fontes publicas sem token, login ou segredo
+        shell: bash
+        run: |
+          set -euo pipefail
+          url='https://github.com/cursodetionlineoficial1-dotcom/NEXUS-YAX-CIANO-PIPER-SOURCE/releases/download/piper-cadu-source-v1.0/NEXUS_YAX_CIANO_PIPER_CADU_GPL_SOURCE_v1.zip'
+          file="$RUNNER_TEMP/NEXUS_YAX_CIANO_PIPER_CADU_GPL_SOURCE_v1.zip"
+          curl --fail --location --retry 2 --max-time 180 \
+            --silent --show-error --output "$file" "$url"
+          actual="$(stat -c %s "$file")"
+          test "$actual" = '74291857'
+          printf '%s  %s\n' 'f0ce8ef0bb1e4c9d5ff028f4de39c8e0d36913c723490dbca7200b29a24d49e9' "$file" | sha256sum --check --status
+          unzip -tqq "$file"
+          files="$(unzip -Z1 "$file" | wc -l | tr -d ' ')"
+          test "$files" = '64'
+          for item in \
+            LICENSE \
+            PROJECT_CODE_LICENSES.md \
+            src/voice_bridge.py \
+            src/english_client.py \
+            src/hybrid_audio.py \
+            src/pronunciacao_estrangeiros.py \
+            src/voice_english_worker.py \
+            build/preparar_voz_cadu.ps1; do
+            unzip -Z1 "$file" | grep -Fx "$item" >/dev/null
+          done
+          for f in \
+            voice_bridge.py english_client.py hybrid_audio.py \
+            pronunciacao_estrangeiros.py voice_english_worker.py; do
+            unzip -p "$file" "src/$f" | grep -F 'SPDX-License-Identifier: GPL-3.0-or-later' >/dev/null
+          done
+          unzip -Z1 "$file" | grep -E '^upstream/' >/dev/null
+          unzip -Z1 "$file" | grep -F 'ThirdPartyNotices' >/dev/null
+          echo 'GPL_PUBLIC_UNAUTHENTICATED_DOWNLOAD_OK'
+          echo 'GPL_PUBLIC_SOURCE_SHA256_VERIFIED'
+          echo 'GPL_PUBLIC_SOURCE_BUNDLE_FILE_COUNT: 64'
+          {
+            echo '## Fontes GPL verificadas, sem login, senha ou pagamento'
+            echo '- GitHub público recebeu download integral por HTTPS.'
+            echo '- Tamanho exato: 74.291.857 bytes; SHA-256 validado.'
+            echo '- ZIP íntegro, 64 arquivos, cinco SPDX GPL e avisos de terceiros.'
+            echo '- Este teste confirma acesso e integridade, não substitui avaliação jurídica de toda a obra YAX–Piper.'
+          } >> "$GITHUB_STEP_SUMMARY"
